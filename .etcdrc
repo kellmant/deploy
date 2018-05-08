@@ -1,0 +1,4 @@
+[default]
+hosts=keystore:2379
+ssl=false
+

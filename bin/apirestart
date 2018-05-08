@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+source $HOME/.IPS
+
+if [ ! -f $HOME/.SMC ] ; then
+    echo "No config found"
+    exit 1
+fi
+
+if [ -z ${1} ] ; then
+    echo
+    echo "who?"
+    echo
+    cat $HOME/.SMC 2> /dev/null
+    exit 1
+fi
+
+
+ mgenv="/ctrl/cfg/mg/${1}" 
+ hostname=$(etcdctl get $mgenv/config_system/hostname) 
+ host=$(echo "$hostname" | cut -d '.' -f 1)
+ cmdtorun="api restart"
+
+ssh admin@${hostname} "$cmdtorun"
+echo "waiting for server to finish processinging startup"
+sleep 15
+ssh admin@${hostname} "api status"
+sleep 10
+echo "activating vsec controller"
+ssh admin@${hostname} "vsec on"
+echo "Ready. This is a new manager."
+sleep 2
+echo "installing sk113955 ghost buster script"
+echo
+ssh admin@${hostname} "curl_cli -s -k -o file.tar https://s3.amazonaws.com/cdn.seclab.cloud/sk113955.tar"
+sleep 3
+ssh admin@${hostname} "tar xf file.tar"
+sleep 3
+ssh admin@${hostname} "mv discard_web_api_no_changes.sh ghostbuster.sh"
+cat $HOME/.SMC | head -n 13 > $HOME/SMC.${1}
+msgbus " $ipscmd of $host complete for new manager "
+mv $HOME/SMC.${1} $HOME/.SMC
+
+
+
+msgbus "management first configuration setup done. Prep work done, ready for cloud demo. "
+

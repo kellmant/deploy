@@ -90,8 +90,10 @@ function job_color()
 
 #============================================================
 promptls () {
+    if [ "$PWD" != "$HOME" ] ; then
     pmptls=$(ls -xF1 --color=always "$PWD" | tr '\n' ' ') 
     echo -en "${pmptls[@]}"
+    fi
 }
 
 promptcf () {
@@ -317,11 +319,11 @@ PS1=${PS1}"\[${Yellow}\][${systype}\[${BYellow}\]\[${sysback}\]\$(promptsys)\[${
         PS1=${PS1}"\n\[${BYellow}\]|_/cfg:\[${BBlue}\]\$(promptcfg)\[${BYellow}\] created:\[${BGreen}\]\$(promptrun)\[${BYellow}\] cost:\[${BRed}\]\$(promptscore)\[${NC}\]\n"
 	# place directory we are working in above the prompt
 	# set the prompt
-    PS1=${PS1}"\[${BYellow}\]|_/\[${BGreen}\]DIR [\[${BCyan}\]\$(promptpwd) \[${BGreen}\]] "
+    PS1=${PS1}"\[${BYellow}\]|_/\[${BGreen}\]DIR [\[${BCyan}\]\$(promptpwd) \[${BGreen}\]] \[${NC} \$(promptls) "
     	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptcf)\[${BYellow}\]]"
     	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptcr)\[${BYellow}\]]"
     	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptde)\[${BYellow}\]]"
-	PS1=${PS1}"\n\n\[${Green}\]|cmd|=> \[${NC}\]"
+	PS1=${PS1}"\n\n\[${Green}\]|=> \[${NC}\]"
         # Set title of current xterm:
         #PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
 

@@ -94,6 +94,21 @@ promptls () {
     echo -en "${pmptls[@]}"
 }
 
+promptcf () {
+    pmptcf=$(ls -xF1 --color=always "$HOME/cfg" | tr '\n' ' ') 
+    echo -en "cfg/${pmptcf[@]}"
+}
+
+promptcr () {
+    pmptcr=$(ls -xF1 --color=always "$HOME/create" | tr '\n' ' ') 
+    echo -en "create/${pmptcr[@]}"
+}
+
+promptde () {
+    pmptde=$(ls -xF1 --color=always "$HOME/destroy" | tr '\n' ' ') 
+    echo -en "destroy/${pmptde[@]}"
+}
+
 promptpwd () {
     prmptwd=$(pwd | tr -d '\n')
     echo -en "${prmptwd[@]}"
@@ -302,8 +317,10 @@ PS1=${PS1}"\[${Yellow}\][${systype}\[${BYellow}\]\[${sysback}\]\$(promptsys)\[${
         PS1=${PS1}"\n\[${BYellow}\]|_/cfg:\[${BBlue}\]\$(promptcfg)\[${BYellow}\] created:\[${BGreen}\]\$(promptrun)\[${BYellow}\] cost:\[${BRed}\]\$(promptscore)\[${NC}\]\n"
 	# place directory we are working in above the prompt
 	# set the prompt
-    PS1=${PS1}"\[${BYellow}\]|_/\[${BGreen}\]DIR [\[${BCyan}\]\$(promptpwd) \[${BGreen}\]]"
-    	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptgit)\[${BYellow}\]]"
+    PS1=${PS1}"\[${BYellow}\]|_/\[${BGreen}\]DIR [\[${BCyan}\]\$(promptpwd) \[${BGreen}\]] "
+    	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptcf)\[${BYellow}\]]"
+    	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptcr)\[${BYellow}\]]"
+    	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptde)\[${BYellow}\]]"
 	PS1=${PS1}"\n\n\[${Green}\]|cmd|=> \[${NC}\]"
         # Set title of current xterm:
         #PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
@@ -342,6 +359,7 @@ alias cleanscreen='reset ; resize'
 alias setme='sed -i \"s/BUDDY/${BUDDY}/g\" ${1}'
 alias helpme='tree --dirsfirst -A $HOME'
 alias cfg='skey ctrl/cfg'
+alias create='skey ctrl/create'
 
 reset
 resize

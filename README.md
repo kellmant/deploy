@@ -10,7 +10,6 @@ Follows a simple pattern of action/target, used to test three states of infrastr
 ### 1. Configure your instance
 
 cfg
-|── docker 
 |── mg => configure Check Point management station for autodeploy
 |── openstack
 |── secvpc => configure a vpc and gateway to secure it

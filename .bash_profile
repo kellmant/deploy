@@ -98,17 +98,17 @@ promptls () {
 
 promptcf () {
     pmptcf=$(ls -xF1 --color=always "$HOME/cfg" | tr '\n' ' ') 
-    echo -en "cfg/${pmptcf[@]}"
+    echo -en "(${pmptcf[@]})"
 }
 
 promptcr () {
     pmptcr=$(ls -xF1 --color=always "$HOME/create" | tr '\n' ' ') 
-    echo -en "create/${pmptcr[@]}"
+    echo -en "(${pmptcr[@]})"
 }
 
 promptde () {
     pmptde=$(ls -xF1 --color=always "$HOME/destroy" | tr '\n' ' ') 
-    echo -en "destroy/${pmptde[@]}"
+    echo -en "(${pmptde[@]})"
 }
 
 promptpwd () {
@@ -309,21 +309,21 @@ fi
 PS1=""
 
 	# mark last output
-PS1=${PS1}"\[${Green}\]<=|end|\[${BYellow}\][\$(checkexit)\$(prompthist)\[${NC}\]\[${BYellow}\]][runtime:\[${BWhite}\]\${clock_show}\[${BYellow}\]]\[${NC}\]\n"
+PS1=${PS1}"\[${Purple}\]\[${On_White}\]<=\[${On_Black}\]\[${BYellow}\][\$(checkexit)\$(prompthist)\[${NC}\]\[${BYellow}\]][runtime:\[${BWhite}\]\${clock_show}\[${BYellow}\]]\[${NC}\]"
         # Start with time of day
 	# put some user and host info in.
 #        PS1=${PS1}"\n\[${Yellow}\][\[${BCyan}\]\u\[${NC}\]@\[${BBlack}\]\[${On_Cyan}\]\h\[${Yellow}\]]\[${NC}\]"
-	PS1=${PS1}"\n\[${Yellow}\][\[${NC}\]\@ \d\[${Yellow}\]]\[${NC}\]"
+	PS1=${PS1}"\[${Yellow}\][\[${NC}\]\@ \d\[${Yellow}\]]\[${NC}\]"
 PS1=${PS1}"\[${Yellow}\][${systype}\[${BYellow}\]\[${sysback}\]\$(promptsys)\[${Yellow}\] role:\[${SU}\]\u\[${Yellow}\]]\[${NC}\]"
-        PS1=${PS1}":\[${Yellow}\][cmd:\[${BRed}\]\#\[${Yellow}\] done:\[${Green}\]\!\[${Yellow}\]]session:\[${BCyan}\]\$(promptsession)\[${NC}\]"
-        PS1=${PS1}"\n\[${BYellow}\]|_/cfg:\[${BBlue}\]\$(promptcfg)\[${BYellow}\] created:\[${BGreen}\]\$(promptrun)\[${BYellow}\] cost:\[${BRed}\]\$(promptscore)\[${NC}\]\n"
+        PS1=${PS1}":\[${Yellow}\][cmd:\[${BRed}\]\#\[${Yellow}\] done:\[${Green}\]\!\[${Yellow}\]]\n\nsession:\[${BCyan}\]\$(promptsession)\[${NC}\]"
+        PS1=${PS1}"\[${Yellow}\] - configured:\[${BBlue}\]\$(promptcfg)\[${Yellow}\] - created:\[${BGreen}\]\$(promptrun)\[${Yellow}\] - cost:\[${BRed}\]\$(promptscore)\[${NC}\]"
 	# place directory we are working in above the prompt
 	# set the prompt
-    PS1=${PS1}"\[${BYellow}\]|_/\[${BGreen}\]DIR [\[${BCyan}\]\$(promptpwd) \[${BGreen}\]] \[${NC} \$(promptls) "
-    	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptcf)\[${BYellow}\]]"
-    	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptcr)\[${BYellow}\]]"
-    	PS1=${PS1}"\n\[${BYellow}\]   |_/[\[${NC}\]\$(promptde)\[${BYellow}\]]"
-	PS1=${PS1}"\n\n\[${Green}\]|=> \[${NC}\]"
+    	PS1=${PS1}"\n\[${Yellow}\]|_/[\[${BWhite}\]cfg/\[${NC}\]\$(promptcf)\[${Yellow}\]]"
+    	PS1=${PS1}"\n\[${Yellow}\]|_/[\[${BWhite}\]create/\[${NC}\]\$(promptcr)\[${Yellow}\]]"
+    	PS1=${PS1}"\n\[${Yellow}\]|_/[\[${BRed}\]destroy${BWhite}/\[${NC}\]\$(promptde)\[${Yellow}\]]"
+    	PS1=${PS1}"\n\[${Yellow}\]|_/DIR[\[${BCyan}\]\$(promptpwd)\[${Yellow}\]] \[${NC}\$(promptls)"
+	PS1=${PS1}"\n\[${Purple}\]\[${On_White}\]=>\[${NC}\] "
         # Set title of current xterm:
         #PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
 
@@ -360,8 +360,10 @@ alias run='ssh -tq core'
 alias cleanscreen='reset ; resize'
 alias setme='sed -i \"s/BUDDY/${BUDDY}/g\" ${1}'
 alias helpme='tree --dirsfirst -A $HOME'
+alias ctrl='cd ~'
 alias cfg='skey ctrl/cfg'
 alias create='skey ctrl/create'
+alias destroy='ls $HOME/names | cut -d '.' -f 2 | grep -v md'
 
 reset
 resize

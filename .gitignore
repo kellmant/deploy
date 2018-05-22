@@ -16,6 +16,7 @@ KEYSTORE*
 *.pem
 *.crt
 names/*
+export/*
 !names/README.md
 .gitconfig
 .git-credentials

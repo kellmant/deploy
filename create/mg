@@ -284,6 +284,11 @@ echo
 printf 'Elapsed Time %dh:%dm:%ds\n' $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
 echo
 msgbus " New R80 SMC ${hostname} needs first time api activation in the GUI" 
+ssh -q admin@${hostname} "mgmt_cli login user ${username} password ${password} domain \"System Data\" > id.txt"
+ssh -q admin@${hostname} "mgmt_cli set api-settings accepted-api-calls-from \"All IP addresses\" -s id.txt"
+ssh -q admin@${hostname} "mgmt_cli publish -s id.txt"
+ssh -q admin@${hostname} "mgmt_cli logout -s id.txt"
+
 cat $HOME/.SMC
 
 etcdctl set $runenv/${host}/time "$elapsed"

@@ -62,7 +62,7 @@ for key in "${!myarray[@]}" ; do
 done
 getpass=$(totem)
 mgami=$(get_ami)
-mgsize=$(etcdctl get $mycfg/size) || { mgsize="medium" ; }
+mgsize=$(etcdctl get $mycfg/size) || { mgsize="small" ; }
 vpc=$(aws ec2 describe-vpcs --region $myregion | jq -r '.Vpcs[].VpcId')
 mgadminname=$(etcdctl get $mycfg/config_system/mgmt_admin_name) || { mgadminname="apiadmin" ; }
 adminpass=$(etcdctl get $mycfg/config_system/mgmt_admin_passwd) || { adminpass="${getpass}" ; }

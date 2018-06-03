@@ -11,7 +11,7 @@ if [ -z ${1} ] ; then
     exit 1
 fi
 
-if [ ! -f ${1}.tar ] ; then
+if [ ! -f $HOME/export/${1}.tar ] ; then
     echo
     echo "Can't find ${1}.tar export"
     echo

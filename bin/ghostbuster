@@ -22,7 +22,7 @@ ssh admin@${hostname} "$cmdtorun"
 echo "checking api status . . . "
 sleep 3
 
-ssh admin@${hostname} "api status"
+#ssh admin@${hostname} "api status"
 
 echo "ghost sessions busted on ${1}"
 echo

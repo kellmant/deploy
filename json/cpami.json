@@ -1,0 +1,263 @@
+{
+  "Description": "Returns a Check Point Amazon Machine ID (2018-07-01)",
+  "Parameters": {
+    "Version": {
+      "Description": "Security Gateway version",
+      "Type": "String",
+      "Default": "R80.10-BYOL",
+      "AllowedValues": [
+        "BYOL",
+        "PAYG",
+        "R80",
+        "R77.30-BYOL",
+        "R77.30-PAYG-NGTP",
+        "R80.10-BYOL",
+        "R80.10-PAYG-NGTP",
+        "R80.10-BYOL-GW",
+        "R80.10-PAYG-NGTP-GW",
+        "R80.10-PAYG-NGTX-GW",
+        "R80.10-PAYG-MGMT5"
+      ]
+    }
+  },
+  "Mappings": {
+    "ConverterMap": {
+      "BYOL": {
+        "Value": "R7730BYOL"
+      },
+      "PAYG": {
+        "Value": "R7730PAYGNGTP"
+      },
+      "R80": {
+        "Value": "R80"
+      },
+      "R77.30-BYOL": {
+        "Value": "R7730BYOL"
+      },
+      "R77.30-PAYG-NGTP": {
+        "Value": "R7730PAYGNGTP"
+      },
+      "R80.10-BYOL": {
+        "Value": "R8010BYOL"
+      },
+      "R80.10-PAYG-NGTP": {
+        "Value": "R8010PAYGNGTP"
+      },
+      "R80.10-BYOL-GW": {
+        "Value": "R8010BYOLGW"
+      },
+      "R80.10-PAYG-NGTP-GW": {
+        "Value": "R8010PAYGNGTPGW"
+      },
+      "R80.10-PAYG-NGTX-GW": {
+        "Value": "R8010PAYGNGTXGW"
+      },
+      "R80.10-PAYG-MGMT5": {
+        "Value": "R8010PAYGMGMT5"
+      }
+    },
+    "RegionMap": {
+      "ap-northeast-1": {
+        "R7730BYOL": "ami-62dea804",
+        "R7730PAYGNGTP": "ami-16dfa970",
+        "R80": "ami-baccb2dd",
+        "R8010BYOL": "ami-a3ee3edc",
+        "R8010BYOLGW": "ami-05eb3b7a",
+        "R8010PAYGMGMT5": "ami-3aec3c45",
+        "R8010PAYGNGTP": "ami-ab11c1d4",
+        "R8010PAYGNGTPGW": "ami-9511c1ea",
+        "R8010PAYGNGTXGW": "ami-d914c4a6"
+      },
+      "ap-northeast-2": {
+        "R7730BYOL": "ami-e5b1138b",
+        "R7730PAYGNGTP": "ami-74b6141a",
+        "R80": "ami-d3d302bd",
+        "R8010BYOL": "ami-5076c33e",
+        "R8010BYOLGW": "ami-4076c32e",
+        "R8010PAYGMGMT5": "ami-4a76c324",
+        "R8010PAYGNGTP": "ami-4d76c323",
+        "R8010PAYGNGTPGW": "ami-5176c33f",
+        "R8010PAYGNGTXGW": "ami-4f76c321"
+      },
+      "ap-south-1": {
+        "R7730BYOL": "ami-ef104280",
+        "R7730PAYGNGTP": "ami-7412401b",
+        "R80": "ami-54d7a13b",
+        "R8010BYOL": "ami-35ad985a",
+        "R8010BYOLGW": "ami-1ea99c71",
+        "R8010PAYGMGMT5": "ami-34ad985b",
+        "R8010PAYGNGTP": "ami-8b96a3e4",
+        "R8010PAYGNGTPGW": "ami-57a19438",
+        "R8010PAYGNGTXGW": "ami-8c96a3e3"
+      },
+      "ap-southeast-1": {
+        "R7730BYOL": "ami-ecf8b990",
+        "R7730PAYGNGTP": "ami-95fbbae9",
+        "R80": "ami-4dd3792e",
+        "R8010BYOL": "ami-c99994b5",
+        "R8010BYOLGW": "ami-c1c5c8bd",
+        "R8010PAYGMGMT5": "ami-4a828f36",
+        "R8010PAYGNGTP": "ami-c0c5c8bc",
+        "R8010PAYGNGTPGW": "ami-49828f35",
+        "R8010PAYGNGTXGW": "ami-df9895a3"
+      },
+      "ap-southeast-2": {
+        "R7730BYOL": "ami-e3728981",
+        "R7730PAYGNGTP": "ami-56778c34",
+        "R80": "ami-1a8d8979",
+        "R8010BYOL": "ami-69dd050b",
+        "R8010BYOLGW": "ami-6cde060e",
+        "R8010PAYGMGMT5": "ami-8ddd05ef",
+        "R8010PAYGNGTP": "ami-cfa77fad",
+        "R8010PAYGNGTPGW": "ami-8edd05ec",
+        "R8010PAYGNGTXGW": "ami-d0a77fb2"
+      },
+      "ca-central-1": {
+        "R7730BYOL": "ami-4faa2e2b",
+        "R7730PAYGNGTP": "ami-5ea82c3a",
+        "R80": "ami-09ec516d",
+        "R8010BYOL": "ami-47a22023",
+        "R8010BYOLGW": "ami-fea2209a",
+        "R8010PAYGMGMT5": "ami-ffa2209b",
+        "R8010PAYGNGTP": "ami-f8a2209c",
+        "R8010PAYGNGTPGW": "ami-079d1f63",
+        "R8010PAYGNGTXGW": "ami-46a22022"
+      },
+      "eu-central-1": {
+        "R7730BYOL": "ami-98f397f7",
+        "R7730PAYGNGTP": "ami-a1f195ce",
+        "R80": "ami-1cb77873",
+        "R8010BYOL": "ami-cbbd8320",
+        "R8010BYOLGW": "ami-61b9878a",
+        "R8010PAYGMGMT5": "ami-cca79927",
+        "R8010PAYGNGTP": "ami-c9a79922",
+        "R8010PAYGNGTPGW": "ami-c8a79923",
+        "R8010PAYGNGTXGW": "ami-cabd8321"
+      },
+      "eu-west-1": {
+        "R7730BYOL": "ami-0d610a74",
+        "R7730PAYGNGTP": "ami-0f600b76",
+        "R80": "ami-7c66510f",
+        "R8010BYOL": "ami-004a42ea",
+        "R8010BYOLGW": "ami-d448403e",
+        "R8010PAYGMGMT5": "ami-61b4bd8b",
+        "R8010PAYGNGTP": "ami-65b4bd8f",
+        "R8010PAYGNGTPGW": "ami-64b4bd8e",
+        "R8010PAYGNGTXGW": "ami-6eb4bd84"
+      },
+      "eu-west-2": {
+        "R7730BYOL": "ami-f1947196",
+        "R7730PAYGNGTP": "ami-5896733f",
+        "R80": "ami-d49c96b0",
+        "R8010BYOL": "ami-7022cb17",
+        "R8010BYOLGW": "ami-7422cb13",
+        "R8010PAYGMGMT5": "ami-7722cb10",
+        "R8010PAYGNGTP": "ami-9625ccf1",
+        "R8010PAYGNGTPGW": "ami-3427ce53",
+        "R8010PAYGNGTXGW": "ami-8724cde0"
+      },
+      "eu-west-3": {
+        "R8010BYOL": "ami-19e15164",
+        "R8010BYOLGW": "ami-9ee252e3",
+        "R8010PAYGMGMT5": "ami-47e0503a",
+        "R8010PAYGNGTP": "ami-9dfe4ee0",
+        "R8010PAYGNGTPGW": "ami-58e05025",
+        "R8010PAYGNGTXGW": "ami-41ff4f3c"
+      },
+      "sa-east-1": {
+        "R7730BYOL": "ami-465a142a",
+        "R7730PAYGNGTP": "ami-145f1178",
+        "R80": "ami-902a4ffc",
+        "R8010BYOL": "ami-8be5c0e7",
+        "R8010BYOLGW": "ami-7be5c017",
+        "R8010PAYGMGMT5": "ami-86e5c0ea",
+        "R8010PAYGNGTP": "ami-85e5c0e9",
+        "R8010PAYGNGTPGW": "ami-84e5c0e8",
+        "R8010PAYGNGTXGW": "ami-67e5c00b"
+      },
+      "us-east-1": {
+        "R7730BYOL": "ami-a5e7ecdf",
+        "R7730PAYGNGTP": "ami-38e3e842",
+        "R80": "ami-a66981b0",
+        "R8010BYOL": "ami-57134d28",
+        "R8010BYOLGW": "ami-b5144aca",
+        "R8010PAYGMGMT5": "ami-3319474c",
+        "R8010PAYGNGTP": "ami-45114f3a",
+        "R8010PAYGNGTPGW": "ami-86124cf9",
+        "R8010PAYGNGTXGW": "ami-0a144a75"
+      },
+      "us-east-2": {
+        "R7730BYOL": "ami-da6652bf",
+        "R7730PAYGNGTP": "ami-7d675318",
+        "R80": "ami-5840653d",
+        "R8010BYOL": "ami-1f95ac7a",
+        "R8010BYOLGW": "ami-0994ad6c",
+        "R8010PAYGMGMT5": "ami-1395ac76",
+        "R8010PAYGNGTP": "ami-269fa643",
+        "R8010PAYGNGTPGW": "ami-0d9fa668",
+        "R8010PAYGNGTXGW": "ami-9d95acf8"
+      },
+      "us-gov-west-1": {
+        "R7730BYOL": "ami-185dcb79",
+        "R7730PAYGNGTP": "ami-7c5cca1d",
+        "R80": "ami-0b269d6a",
+        "R8010BYOL": "ami-30851351",
+        "R8010BYOLGW": "ami-095bcd68",
+        "R8010PAYGMGMT5": "ami-5b82143a",
+        "R8010PAYGNGTP": "ami-fd86109c",
+        "R8010PAYGNGTPGW": "ami-815ccae0",
+        "R8010PAYGNGTXGW": "ami-ca8711ab"
+      },
+      "us-west-1": {
+        "R7730BYOL": "ami-9a7779fa",
+        "R7730PAYGNGTP": "ami-e9747a89",
+        "R80": "ami-6b04560b",
+        "R8010BYOL": "ami-f94bad9a",
+        "R8010BYOLGW": "ami-fe49af9d",
+        "R8010PAYGMGMT5": "ami-484bad2b",
+        "R8010PAYGNGTP": "ami-f84bad9b",
+        "R8010PAYGNGTPGW": "ami-1657b175",
+        "R8010PAYGNGTXGW": "ami-fa4bad99"
+      },
+      "us-west-2": {
+        "R7730BYOL": "ami-d972f5a1",
+        "R7730PAYGNGTP": "ami-d77dfaaf",
+        "R80": "ami-b7ff40d7",
+        "R8010BYOL": "ami-6b3e7513",
+        "R8010BYOLGW": "ami-70347f08",
+        "R8010PAYGMGMT5": "ami-b52269cd",
+        "R8010PAYGNGTP": "ami-f8317a80",
+        "R8010PAYGNGTPGW": "ami-d5246fad",
+        "R8010PAYGNGTXGW": "ami-68246f10"
+      }
+    }
+  },
+  "Resources": {
+    "DummyHandle": {
+      "Type": "AWS::CloudFormation::WaitConditionHandle",
+      "Properties": {}
+    }
+  },
+  "Outputs": {
+    "ImageId": {
+      "Description": "Check Point Security Gateway AMI",
+      "Value": {
+        "Fn::FindInMap": [
+          "RegionMap",
+          {
+            "Ref": "AWS::Region"
+          },
+          {
+            "Fn::FindInMap": [
+              "ConverterMap",
+              {
+                "Ref": "Version"
+              },
+              "Value"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

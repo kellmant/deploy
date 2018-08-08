@@ -8,6 +8,11 @@ if [ -z ${1} ] ; then
     echo
     etcdctl ls ctrl/cfg/mg 2> /dev/null | cut -d '/' -f 5
     echo
+    echo " currently configured as a manager"
+    echo
+    echo " exports available locally:"
+    ls /ctrl/export/
+    echo
     exit 1
 fi
 
@@ -32,9 +37,9 @@ runcmd="ssh admin@${hostname}"
 echo "Connecting to ${mysys} for restore . . . "
 echo
 echo -en "${BGreen} "
-$runcmd "tar xfv smc.tar ; dos2unix ${mgsys}/*"
+$runcmd "tar xfv smc.tar ; dos2unix ${mgsys}/* ; chmod -R a+x ${mgsys}"
 sleep 2
-$runcmd "unset TMOUT ; ${mgsys}/ASA5515_objects.sh ; ${mgsys}/ASA5515_policy.sh ; ${mgsys}/ASA5515_policy_opt.sh"
+$runcmd "unset TMOUT ; ${mgsys}/objects.sh ; ${mgsys}/policy.sh ; ${mgsys}/policy_opt.sh"
 echo -en "${NC}"
 echo
 echo

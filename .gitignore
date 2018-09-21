@@ -17,6 +17,7 @@ KEYSTORE*
 *.crt
 names/*
 export/*
+ExportImportPolicyPackage
 !names/README.md
 .gitconfig
 .git-credentials
